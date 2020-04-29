@@ -18,15 +18,14 @@
                 <div class="pr-5"><strong>400</strong> follwers</div>
                 <div class="pr-5"><strong>300</strong> following</div>
             </div>
-            <div class="pt-3 font-weight-bold">
-                Software Engineer Graduate
-            </div>
-            <div>
-                Software Engineer Graduate currently looking for new, exciting opportunities.
-            </div>
-            <div>
-                <a href="https://www.linkedin.com/in/julio-rivas-570209176">Linkedin Profile</a>
-            </div>
+            <!-- user/profile title-->
+            <div class="pt-3 font-weight-bold">{{ $user->profile->title }}</div>
+            
+            <!-- user/profile description-->
+            <div>{{$user->profile->description }}</div>
+
+            <!-- user/profile url-->
+            <div><a href="#">{{ $user->profile->url }}</a></div>
         </div>
     </div>
 
