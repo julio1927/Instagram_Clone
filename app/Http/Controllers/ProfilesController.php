@@ -20,6 +20,7 @@ class ProfilesController extends Controller
 
     public function edit(User $user)
     {
+        $this->auth('update', $user->profile);
         return view('profiles.edit',compact('user'));
     }
 

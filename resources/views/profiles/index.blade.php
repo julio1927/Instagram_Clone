@@ -17,11 +17,12 @@
                 <a href="/p/create">Add New Post</a> 
             </div>
 
+            @can('update', $user->profile)
             <!-- Edit Profile --> 
             <div>
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
             </div>
-
+            @endcan
             <!-- User Profile Stats -->
             <div class="d-flex">
                 <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
