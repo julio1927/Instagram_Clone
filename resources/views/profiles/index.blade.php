@@ -7,7 +7,7 @@
     <div class="row">
         <!-- Profile pic-->
         <div class="col-3 p-5">
-        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGYCYK6L_MgXw/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=oRbXTza4haDLzJpBLwbkMl2wN1YzAuTl3kJrt0kXHxY" class="rounded-circle">
+        <img src="/storage/{{ $user->profile->image }}" class="rounded-circle w-100">
         </div>
         
         <!-- user/profile info-->
