@@ -48,12 +48,20 @@ class User extends Authenticatable
             ]);
         });
     }
-
+    
+    // relationship for user and profile 
     public function profile()
     {
         return $this->hasOne(Profile::class); // Makes 1:1 relationship with user and profile 
     }
 
+    // relationship for user and following
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
+
+    //relationship for user and posts
     public function posts()
     {
         return $this->hasMany(Post::class)->orderBy('created_at','DESC'); // Makes 1:Many relationship with user and posts 
