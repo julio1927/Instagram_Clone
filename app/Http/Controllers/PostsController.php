@@ -13,6 +13,17 @@ class PostsController extends Controller
         $this->middleware('auth');// user can't create post unless authorized 
     }
 
+
+    public function index()
+    {
+        $users = auth()->following()->pluck('profiles.user_id');
+
+        $posts = Post::whereIn('user_id', $users)->latest()->get();
+        
+        return view('posts.index', compact('posts'));
+    }
+
+
     // creating post form 
     public function create()
     {
