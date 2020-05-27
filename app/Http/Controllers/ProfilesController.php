@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Cache;
 
 class ProfilesController extends Controller
 {
@@ -18,8 +19,28 @@ class ProfilesController extends Controller
     {
         //checks if authenicated user is following user that is being passed in, if not it will return false 
         $follows = (auth()->user()) ?  auth()->user()->following->contains($user->id) : false;
+        
+        // user profile data (posts,followers,following)
+        $postCount = Cache::remember('count.posts' . $user->id, 
+        now()->addSeconds(30), 
+        function () use ($user) {
+            return $user->posts->count();
+        });
 
-        return view('profiles.index',compact('user', 'follows'));
+        $followersCount = Cache::remember('count.followers' . $user->id, 
+        now()->addSeconds(30), 
+        function () use ($user) {
+            return $user->profile->followers->count();
+        });
+        
+        $followingCount = Cache::remember('count.following' . $user->id, 
+        now()->addSeconds(30), 
+        function () use ($user) {
+            return $user->profile->following->count();
+        });
+
+        
+        return view('profiles.index',compact('user', 'follows', 'postCount', 'followersCount', 'followingCount'));
     }
 
     public function edit(User $user)
