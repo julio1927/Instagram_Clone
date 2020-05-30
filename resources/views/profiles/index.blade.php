@@ -31,9 +31,9 @@
             @endcan
             <!-- User Profile Stats -->
             <div class="d-flex">
-                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div class="pr-5"><strong>{{ $user->profile->followers->count() }}</strong> follwers</div>
-                <div class="pr-5"><strong>{{ $user->profile->following->count() }}</strong> following</div>
+                <div class="pr-5"><strong>{{ $postCount }}</strong> posts</div>
+                <div class="pr-5"><strong>{{ $followersCount }}</strong> follwers</div>
+                <div class="pr-5"><strong>{{ $followingCount }}</strong> following</div>
             </div>
             <!-- user/profile title-->
             <div class="pt-3 font-weight-bold">{{ $user->profile->title }}</div>

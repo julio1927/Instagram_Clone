@@ -36,7 +36,7 @@ class ProfilesController extends Controller
         $followingCount = Cache::remember('count.following' . $user->id, 
         now()->addSeconds(30), 
         function () use ($user) {
-            return $user->profile->following->count();
+            return $user->following->count();
         });
 
         
